@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		AC74F8262396A28B00706ABD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74F8252396A28B00706ABD /* AppDelegate.swift */; };
 		AC74F8282396A28B00706ABD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74F8272396A28B00706ABD /* SceneDelegate.swift */; };
-		AC74F82A2396A28B00706ABD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74F8292396A28B00706ABD /* ViewController.swift */; };
 		AC74F82D2396A28B00706ABD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC74F82B2396A28B00706ABD /* Main.storyboard */; };
 		AC74F8302396A28B00706ABD /* PhotoSaver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC74F82E2396A28B00706ABD /* PhotoSaver.xcdatamodeld */; };
 		AC74F8322396A29900706ABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC74F8312396A29900706ABD /* Assets.xcassets */; };
 		AC74F8352396A29900706ABD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC74F8332396A29900706ABD /* LaunchScreen.storyboard */; };
+		AC74F8402396A42D00706ABD /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74F83F2396A42D00706ABD /* PhotosCollectionViewCell.swift */; };
+		AC74F8422396A6B700706ABD /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74F8412396A6B700706ABD /* PhotosViewController.swift */; };
+		AC74F8452396B6BE00706ABD /* Alert-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74F8442396B6BE00706ABD /* Alert-ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC74F8222396A28B00706ABD /* PhotoSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC74F8252396A28B00706ABD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC74F8272396A28B00706ABD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AC74F8292396A28B00706ABD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC74F82C2396A28B00706ABD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC74F82F2396A28B00706ABD /* PhotoSaver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoSaver.xcdatamodel; sourceTree = "<group>"; };
 		AC74F8312396A29900706ABD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC74F8342396A29900706ABD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC74F8362396A29900706ABD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC74F83F2396A42D00706ABD /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC74F8412396A6B700706ABD /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		AC74F8442396B6BE00706ABD /* Alert-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert-ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,50 @@
 		AC74F8242396A28B00706ABD /* PhotoSaver */ = {
 			isa = PBXGroup;
 			children = (
-				AC74F8252396A28B00706ABD /* AppDelegate.swift */,
-				AC74F8272396A28B00706ABD /* SceneDelegate.swift */,
-				AC74F8292396A28B00706ABD /* ViewController.swift */,
-				AC74F82B2396A28B00706ABD /* Main.storyboard */,
+				AC74F8432396B6A900706ABD /* Extensions */,
+				AC74F83C2396A2B800706ABD /* Delegates */,
+				AC74F83E2396A2F300706ABD /* Controllers */,
+				AC74F83D2396A2D800706ABD /* VIews */,
 				AC74F8312396A29900706ABD /* Assets.xcassets */,
-				AC74F8332396A29900706ABD /* LaunchScreen.storyboard */,
 				AC74F8362396A29900706ABD /* Info.plist */,
 				AC74F82E2396A28B00706ABD /* PhotoSaver.xcdatamodeld */,
 			);
 			path = PhotoSaver;
+			sourceTree = "<group>";
+		};
+		AC74F83C2396A2B800706ABD /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				AC74F8252396A28B00706ABD /* AppDelegate.swift */,
+				AC74F8272396A28B00706ABD /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		AC74F83D2396A2D800706ABD /* VIews */ = {
+			isa = PBXGroup;
+			children = (
+				AC74F82B2396A28B00706ABD /* Main.storyboard */,
+				AC74F8332396A29900706ABD /* LaunchScreen.storyboard */,
+			);
+			path = VIews;
+			sourceTree = "<group>";
+		};
+		AC74F83E2396A2F300706ABD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC74F8412396A6B700706ABD /* PhotosViewController.swift */,
+				AC74F83F2396A42D00706ABD /* PhotosCollectionViewCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AC74F8432396B6A900706ABD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AC74F8442396B6BE00706ABD /* Alert-ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC74F82A2396A28B00706ABD /* ViewController.swift in Sources */,
+				AC74F8402396A42D00706ABD /* PhotosCollectionViewCell.swift in Sources */,
 				AC74F8262396A28B00706ABD /* AppDelegate.swift in Sources */,
+				AC74F8452396B6BE00706ABD /* Alert-ext.swift in Sources */,
 				AC74F8302396A28B00706ABD /* PhotoSaver.xcdatamodeld in Sources */,
 				AC74F8282396A28B00706ABD /* SceneDelegate.swift in Sources */,
+				AC74F8422396A6B700706ABD /* PhotosViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
