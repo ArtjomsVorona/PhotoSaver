@@ -10,8 +10,6 @@ import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
     
-    //TODO: Add title and Favorite image
-    
-    @IBOutlet weak var collectionImageView: UIImageView!
-    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var isFavoriteImageView: UIImageView!
 }

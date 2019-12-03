@@ -16,7 +16,7 @@ class PhotosViewController: UIViewController {
     var savedPhotos = [Photos]()
     var managedObjectContext: NSManagedObjectContext?
     var imagePicker = UIImagePickerController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -74,10 +74,7 @@ class PhotosViewController: UIViewController {
         }
     }
     
-    func pickedNewImage(with image: UIImage) {
-        let pickedItem = Photos(context: managedObjectContext!)
-        pickedItem.image = NSData(data: image.jpegData(compressionQuality: 0.3)!) as Data
-        
+    func saveData() {
         do {
             try self.managedObjectContext?.save()
             self.loadData()
@@ -85,10 +82,16 @@ class PhotosViewController: UIViewController {
             fatalError("Could not save data")
         }
     }
-
+    
+    func pickedNewImage(with image: UIImage) {
+        let pickedItem = Photos(context: managedObjectContext!)
+        pickedItem.image = NSData(data: image.jpegData(compressionQuality: 0.3)!) as Data
+        saveData()
+    }
+    
 }//end class
 
-extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension PhotosViewController: UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("Canceled picker")
@@ -110,9 +113,14 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotosCollectionViewCell else { return UICollectionViewCell() }
         
         let photo = savedPhotos[indexPath.row]
-        print(photo.image as Any)
         
-        let imageView: UIImageView = UIImageView(frame: CGRect(x: 5, y: 2, width: 190, height: 240))
+        let imageView: UIImageView = UIImageView(frame: CGRect(x: 8, y: 2, width: 174, height: 190))
+        
+        if photo.isFavorite {
+            cell.isFavoriteImageView.image = UIImage(systemName: "star.fill")
+        } else {
+            cell.isFavoriteImageView.image = UIImage(systemName: "star")
+        }
         
         if let imageData = photo.value(forKey: "image") as? NSData {
             if let image = UIImage(data: imageData as Data) {
@@ -120,10 +128,16 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
                 cell.contentView.addSubview(imageView)
             }
         }
-        
         return cell
     }
-    
-}
+}//end extension
 
+extension PhotosViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedPhoto = savedPhotos[indexPath.row]
+        selectedPhoto.isFavorite = !selectedPhoto.isFavorite
+        saveData()
+        collectionView.reloadData()
+    }
+}
 
